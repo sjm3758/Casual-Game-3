@@ -5,7 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class ManagerSingleton : MonoBehaviour {
 
+    //instance of the script
     private static ManagerSingleton _instance;
+
+    //global player variables
+    public float playerSpeed;
 
     public static ManagerSingleton Instance
     {
@@ -19,22 +23,33 @@ public class ManagerSingleton : MonoBehaviour {
         }
     }
 
+    //keeps GameManager object across scenes
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(this);
+        //GameObject.Instantiate<GameObject>()
     }
 
     // Use this for initialization
     void Start () {
-        
+        playerSpeed = 5.0f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        /*
-		if (Input.GetKeyDown(KeyCode.Space))
+        
+		if (Input.GetKeyDown(KeyCode.P))
         {
-            SceneManager.LoadScene("MainScene");
-        }*/
-	}
+            SceneManager.LoadScene("PlayerTestScene");
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            SceneManager.LoadScene("ShopScene");
+        }
+    }
+
+    public void UpdateSpeed()
+    {
+        playerSpeed += 0.5f;
+    }
 }
