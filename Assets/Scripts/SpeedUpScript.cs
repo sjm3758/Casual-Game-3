@@ -21,6 +21,6 @@ public class SpeedUpScript : MonoBehaviour {
 
     void UpdateSpeed()
     {
-        manager.GetComponent<ManagerSingleton>().UpdateSpeed();
+        //manager.GetComponent<ManagerSingleton>().UpdateSpeed();
     }
 }
