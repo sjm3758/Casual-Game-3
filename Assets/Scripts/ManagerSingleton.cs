@@ -17,7 +17,9 @@ public class ManagerSingleton : MonoBehaviour {
         {
             if (_instance == null)
             {
-                _instance = GameObject.FindObjectOfType<ManagerSingleton>();
+                GameObject manager = GameObject.Find("GameManager");
+                _instance = manager.GetComponent<ManagerSingleton>();
+                DontDestroyOnLoad(manager);
             }
             return _instance;
         }
@@ -26,13 +28,13 @@ public class ManagerSingleton : MonoBehaviour {
     //keeps GameManager object across scenes
     private void Awake()
     {
-        DontDestroyOnLoad(this);
-        //GameObject.Instantiate<GameObject>()
+        
     }
 
     // Use this for initialization
     void Start () {
         playerSpeed = 5.0f;
+        _instance = Instance;
 	}
 	
 	// Update is called once per frame
@@ -46,10 +48,5 @@ public class ManagerSingleton : MonoBehaviour {
         {
             SceneManager.LoadScene("ShopScene");
         }
-    }
-
-    public void UpdateSpeed()
-    {
-        playerSpeed += 0.5f;
     }
 }
