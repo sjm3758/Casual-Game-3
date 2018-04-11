@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour {
 
-    private Vector3 startingPosition;
-    private Vector3 pos;
+    public Vector3 startingPosition;
+    public Vector3 pos;
 
     public float speed = 5.0f;
     private float deltaX;
