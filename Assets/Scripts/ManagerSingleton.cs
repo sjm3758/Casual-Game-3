@@ -8,13 +8,16 @@ public class ManagerSingleton : MonoBehaviour {
     //instance of the script
     private static ManagerSingleton _instance;
 
-    //global player variables
-    public float playerSpeed;
+    //private player variables and money (update these with functions below)
+    private float playerSpeed;
+    private int playerArmor;
+    private int totalMoney;
 
     public static ManagerSingleton Instance
     {
         get
         {
+            //keep instance of this script across scenes
             if (_instance == null)
             {
                 GameObject manager = GameObject.Find("GameManager");
@@ -25,15 +28,11 @@ public class ManagerSingleton : MonoBehaviour {
         }
     }
 
-    //keeps GameManager object across scenes
-    private void Awake()
-    {
-        
-    }
-
     // Use this for initialization
     void Start () {
         playerSpeed = 5.0f;
+        playerArmor = 1;
+        totalMoney = 0;
         _instance = Instance;
 	}
 	
@@ -48,5 +47,16 @@ public class ManagerSingleton : MonoBehaviour {
         {
             SceneManager.LoadScene("ShopScene");
         }
+    }
+
+    //public functions to update variables
+    public void SpeedUp()
+    {
+        playerSpeed++;
+    }
+
+    public void ArmorUp()
+    {
+        playerArmor++;
     }
 }

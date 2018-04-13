@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SpeedUpScript : MonoBehaviour {
+public class SpeedUp : MonoBehaviour {
 
     private Button btn;
     public GameObject manager;
@@ -12,15 +12,16 @@ public class SpeedUpScript : MonoBehaviour {
 	void Start () {
         btn = this.gameObject.GetComponent<Button>();
         manager = GameObject.Find("GameManager");
-	}
+        btn.onClick.AddListener(UpdateSpeed);
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        btn.onClick.AddListener(UpdateSpeed);
+        
 	}
 
     void UpdateSpeed()
     {
-        //manager.GetComponent<ManagerSingleton>().UpdateSpeed();
+        manager.GetComponent<ManagerSingleton>().SpeedUp();
     }
 }
