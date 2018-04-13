@@ -36,4 +36,19 @@ public class PlayerScript : MonoBehaviour {
         this.gameObject.GetComponent<Rigidbody2D>().velocity = velocity;
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveX * speed, moveY * speed);
     }
+
+    void Fire()
+    {
+        //get mouseDown for fire button
+        //get mousePosition, use it to calculate bullet velocity
+        //create bullet in front of player with velocity
+    }
+
+    void Explode()
+    {
+        //destroy the player object
+        //deduct a life
+        //respawn the player
+        
+    }
 }
