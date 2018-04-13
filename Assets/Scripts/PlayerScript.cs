@@ -19,9 +19,10 @@ public class PlayerScript : MonoBehaviour {
     private int startLives;
     private Vector2 startPos = new Vector2(0,0);
     private GameObject manager;
+    public Vector2 velocity;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         startingPosition = this.gameObject.GetComponent<Transform>().position;
         pos = startingPosition;
         health = maxHealth;
@@ -43,7 +44,7 @@ public class PlayerScript : MonoBehaviour {
         }
         if (currentLives < 1)
         {
-            SceneManager.LoadScene("ShopScene");
+            //SceneManager.LoadScene("ShopScene");
         }
 	}
 
@@ -53,10 +54,10 @@ public class PlayerScript : MonoBehaviour {
         float moveX = Input.GetAxis("Horizontal");
         float moveY = Input.GetAxis("Vertical");
         pos = this.gameObject.GetComponent<Transform>().position;
-        Vector2 velocity = gameObject.GetComponent<Rigidbody2D>().velocity;
+        //velocity = gameObject.GetComponent<Rigidbody2D>().velocity;
 
         this.gameObject.GetComponent<Transform>().position = pos;
-        this.gameObject.GetComponent<Rigidbody2D>().velocity = velocity;
+        //this.gameObject.GetComponent<Rigidbody2D>().velocity = velocity;
         // gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveX * speed, moveY * speed);
         this.gameObject.GetComponent<Transform>().position += this.gameObject.GetComponent<Transform>().up * moveY * speed * Time.deltaTime;
         this.gameObject.GetComponent<Transform>().Rotate(0, 0, -moveX * turnSpeed);
