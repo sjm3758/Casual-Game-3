@@ -233,6 +233,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1002867197 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4635399743600058, guid: 8c6993b6cf1d876488e6f3a03eb80cbb,
+    type: 2}
+  m_PrefabInternal: {fileID: 2040132573}
 --- !u!1001 &2040132573
 Prefab:
   m_ObjectHideFlags: 0
@@ -242,11 +247,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4489781546214042, guid: 8c6993b6cf1d876488e6f3a03eb80cbb, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 2.81
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4489781546214042, guid: 8c6993b6cf1d876488e6f3a03eb80cbb, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -3.31
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4489781546214042, guid: 8c6993b6cf1d876488e6f3a03eb80cbb, type: 2}
       propertyPath: m_LocalPosition.z
@@ -272,6 +277,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114175426684960114, guid: 8c6993b6cf1d876488e6f3a03eb80cbb,
+        type: 2}
+      propertyPath: bulletSpawn
+      value: 
+      objectReference: {fileID: 1002867197}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8c6993b6cf1d876488e6f3a03eb80cbb, type: 2}
   m_IsPrefabParent: 0

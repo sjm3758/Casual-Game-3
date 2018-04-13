@@ -7,22 +7,44 @@ public class PlayerScript : MonoBehaviour {
 
     private Vector3 startingPosition;
     private Vector3 pos;
-
-    public float speed = 4.0f;
-    public float turnSpeed = 6.0f;
+    public GameObject bulletPrefab;
+    public Transform bulletSpawn;
+    private float speed = 4.0f;
+    private float turnSpeed = 3.0f;
     private float deltaX;
     public float speedCap = 15.0f;
+    public int health;
+    private int maxHealth = 5;
+    private int currentLives;
+    private int startLives;
+    private Vector2 startPos = new Vector2(0,0);
+    private GameObject manager;
 
 	// Use this for initialization
 	void Start () {
         startingPosition = this.gameObject.GetComponent<Transform>().position;
+        pos = startingPosition;
+        health = maxHealth;
+        manager = GameObject.Find("GameManager");
+        startLives = manager.GetComponent<ManagerSingleton>().PlayerArmor;
+        currentLives = startLives;
+        //speed = manager.GetComponent<ManagerSingleton>().PlayerSpeed;
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
         Move();
-        
+
         //decelerate to 0
+        if (Input.GetMouseButtonDown(0))
+        {
+            Fire();
+        }
+        if (currentLives < 1)
+        {
+            SceneManager.LoadScene("ShopScene");
+        }
 	}
 
     void Move()
@@ -44,14 +66,17 @@ public class PlayerScript : MonoBehaviour {
     {
         //get mouseDown for fire button
         //get mousePosition, use it to calculate bullet velocity
+        
         //create bullet in front of player with velocity
+        var bullet = (GameObject)Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+        Destroy(bullet, 2.0f);
     }
 
     void Explode()
     {
-        //destroy the player object
         //deduct a life
+        currentLives--;
         //respawn the player
-        
+        pos = startingPosition;
     }
 }

@@ -22,6 +22,6 @@ public class SpeedUp : MonoBehaviour {
 
     void UpdateSpeed()
     {
-        manager.GetComponent<ManagerSingleton>().SpeedUp();
+        manager.GetComponent<ManagerSingleton>().PlayerSpeed += 0.5f;
     }
 }
