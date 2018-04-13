@@ -9,22 +9,27 @@ public class PlayerScript : MonoBehaviour {
     private Vector3 pos;
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
-    public float speed = 4.0f;
-    public float turnSpeed = 6.0f;
+    private float speed = 4.0f;
+    private float turnSpeed = 3.0f;
     private float deltaX;
     public float speedCap = 15.0f;
     public int health;
     private int maxHealth = 5;
-    private int lives;
-    public int startLives = 3;
+    private int currentLives;
+    private int startLives;
     private Vector2 startPos = new Vector2(0,0);
+    private GameObject manager;
 
 	// Use this for initialization
 	void Start () {
         startingPosition = this.gameObject.GetComponent<Transform>().position;
         pos = startingPosition;
         health = maxHealth;
-        lives = startLives;
+        manager = GameObject.Find("GameManager");
+        startLives = manager.GetComponent<ManagerSingleton>().PlayerArmor;
+        currentLives = startLives;
+        //speed = manager.GetComponent<ManagerSingleton>().PlayerSpeed;
+
 	}
 	
 	// Update is called once per frame
@@ -66,7 +71,7 @@ public class PlayerScript : MonoBehaviour {
     void Explode()
     {
         //deduct a life
-        lives--;
+        currentLives--;
         //respawn the player
         pos = startingPosition;
     }

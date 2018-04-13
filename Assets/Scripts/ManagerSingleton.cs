@@ -28,9 +28,46 @@ public class ManagerSingleton : MonoBehaviour {
         }
     }
 
+    //properties for variables
+    public float PlayerSpeed
+    {
+        get
+        {
+            return playerSpeed;
+        }
+        set
+        {
+            playerSpeed = value;
+        }
+    }
+
+    public int PlayerArmor
+    {
+        get
+        {
+            return playerArmor;
+        }
+        set
+        {
+            playerArmor = value;
+        }
+    }
+
+    public int TotalMoney
+    {
+        get
+        {
+            return totalMoney;
+        }
+        set
+        {
+            totalMoney = value;
+        }
+    }
+
     // Use this for initialization
     void Start () {
-        playerSpeed = 5.0f;
+        playerSpeed = 4.0f;
         playerArmor = 1;
         totalMoney = 0;
         _instance = Instance;
@@ -47,16 +84,5 @@ public class ManagerSingleton : MonoBehaviour {
         {
             SceneManager.LoadScene("ShopScene");
         }*/
-    }
-
-    //public functions to update variables
-    public void SpeedUp()
-    {
-        playerSpeed++;
-    }
-
-    public void ArmorUp()
-    {
-        playerArmor++;
     }
 }

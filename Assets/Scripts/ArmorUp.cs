@@ -22,6 +22,6 @@ public class ArmorUp : MonoBehaviour {
 
     void IncreaseArmor()
     {
-        manager.GetComponent<ManagerSingleton>().ArmorUp();
+        manager.GetComponent<ManagerSingleton>().PlayerArmor++;
     }
 }
