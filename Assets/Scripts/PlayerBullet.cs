@@ -19,4 +19,13 @@ public class PlayerBullet : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (coll.gameObject.tag == "Bullet")
+        {
+            Debug.Log("Hit");
+            Destroy(gameObject);
+        }
+    }
 }

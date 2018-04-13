@@ -34,4 +34,13 @@ public class DumbEnemy : MonoBehaviour {
             transform.Translate(Vector3.up * Time.deltaTime * speed);
 
     }
+
+    void OnCollisionEnter2D (Collision2D coll)
+    {
+        if (coll.gameObject.tag == "Bullet")
+        {
+            Debug.Log("Hit");
+            Destroy(gameObject);
+        }
+    }
 }
