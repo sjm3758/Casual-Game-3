@@ -43,10 +43,10 @@ public class ManagerSingleton : MonoBehaviour {
         {
             SceneManager.LoadScene("PlayerTestScene");
         }
-        if (Input.GetKeyDown(KeyCode.S))
+        /*if (Input.GetKeyDown(KeyCode.S))
         {
             SceneManager.LoadScene("ShopScene");
-        }
+        }*/
     }
 
     //public functions to update variables
