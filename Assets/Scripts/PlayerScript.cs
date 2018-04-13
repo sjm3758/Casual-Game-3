@@ -41,6 +41,10 @@ public class PlayerScript : MonoBehaviour {
         {
             Fire();
         }
+        if (currentLives < 1)
+        {
+            SceneManager.LoadScene("ShopScene");
+        }
 	}
 
     void Move()
