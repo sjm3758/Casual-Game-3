@@ -12,6 +12,7 @@ public class DumbEnemy : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
         speed = 3f;
         Vector3 targetDir = target.position - transform.position;
         float angle = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg - 90f;

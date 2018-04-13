@@ -5,6 +5,7 @@ using UnityEngine;
 public class FollowEnemy : MonoBehaviour {
 
     public float speed;
+    public GameObject player;
     public Transform target;
     public float range;
     private float distance;
@@ -13,6 +14,7 @@ public class FollowEnemy : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
         speed = 3f;
         /*Vector3 targetDir = target.position - transform.position;
         float angle = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg - 90f;
