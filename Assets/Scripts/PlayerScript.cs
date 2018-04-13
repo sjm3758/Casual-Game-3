@@ -8,7 +8,8 @@ public class PlayerScript : MonoBehaviour {
     private Vector3 startingPosition;
     private Vector3 pos;
 
-    public float speed = 5.0f;
+    public float speed = 4.0f;
+    public float turnSpeed = 6.0f;
     private float deltaX;
     public float speedCap = 15.0f;
 
@@ -34,7 +35,9 @@ public class PlayerScript : MonoBehaviour {
 
         this.gameObject.GetComponent<Transform>().position = pos;
         this.gameObject.GetComponent<Rigidbody2D>().velocity = velocity;
-        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveX * speed, moveY * speed);
+        // gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveX * speed, moveY * speed);
+        this.gameObject.GetComponent<Transform>().position += this.gameObject.GetComponent<Transform>().up * moveY * speed * Time.deltaTime;
+        this.gameObject.GetComponent<Transform>().Rotate(0, 0, -moveX * turnSpeed);
     }
 
     void Fire()
