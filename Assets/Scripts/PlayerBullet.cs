@@ -20,7 +20,7 @@ public class PlayerBullet : MonoBehaviour {
 		
 	}
 
-    void OnCollisionEnter2D(Collision2D coll)
+  /*  void OnCollisionEnter2D(Collision2D coll)
     {
         if (coll.gameObject.tag == "Bullet")
         {
@@ -28,4 +28,6 @@ public class PlayerBullet : MonoBehaviour {
             Destroy(gameObject);
         }
     }
+
+    */
 }
