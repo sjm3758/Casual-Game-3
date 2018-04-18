@@ -62,6 +62,13 @@ public class PlayerScript : MonoBehaviour {
         this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveX * speed, moveY * speed);
         //this.gameObject.GetComponent<Transform>().position += this.gameObject.GetComponent<Transform>().up * moveY * speed * Time.deltaTime;
         //this.gameObject.GetComponent<Transform>().Rotate(0, 0, -moveX * turnSpeed);
+        //this.gameObject.GetComponent<Transform>().Rotate
+
+        //look at the mouse
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
+        float angleRad = Mathf.Atan2(mousePos.y - pos.y, mousePos.x - pos.x);
+        float angle = (180 / Mathf.PI) * angleRad;
+        this.gameObject.GetComponent<Transform>().rotation = Quaternion.Euler(0, 0, angle - 90);
     }
 
     void Fire()
