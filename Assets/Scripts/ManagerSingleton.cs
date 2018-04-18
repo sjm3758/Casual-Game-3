@@ -8,7 +8,7 @@ public class ManagerSingleton : MonoBehaviour {
     //instance of the script
     private static ManagerSingleton _instance;
 
-    //private player variables and money (update these with functions below)
+    //private player variables and money (update these with properties below)
     private float playerSpeed;
     private int playerArmor;
     private int totalMoney;
@@ -67,19 +67,19 @@ public class ManagerSingleton : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        playerSpeed = 4.0f;
-        playerArmor = 1;
-        totalMoney = 0;
         _instance = Instance;
+        playerSpeed = 4.0f;
+        playerArmor = 2;
+        totalMoney = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
         
-		if (Input.GetKeyDown(KeyCode.P))
+		/*if (Input.GetKeyDown(KeyCode.P))
         {
             SceneManager.LoadScene("PlayerTestScene");
-        }
+        }*/
         /*if (Input.GetKeyDown(KeyCode.S))
         {
             SceneManager.LoadScene("ShopScene");

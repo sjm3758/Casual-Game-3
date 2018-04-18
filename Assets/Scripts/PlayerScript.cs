@@ -9,16 +9,16 @@ public class PlayerScript : MonoBehaviour {
     private Vector3 pos;
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
-    private float speed = 4.0f;
+    public float speed = 4.0f;
     private float turnSpeed = 3.0f;
     private float deltaX;
     public float speedCap = 15.0f;
     public int health;
     private int maxHealth = 5;
-    private int currentLives;
-    private int startLives;
+    public int currentLives = 2;
+    public int startLives = 2;
     private Vector2 startPos = new Vector2(0,0);
-    private GameObject manager;
+    public GameObject manager;
     public Vector2 velocity;
 
     // Use this for initialization
@@ -28,14 +28,23 @@ public class PlayerScript : MonoBehaviour {
         velocity = this.gameObject.GetComponent<Rigidbody2D>().velocity;
         health = maxHealth;
         manager = GameObject.Find("GameManager");
-        startLives = manager.GetComponent<ManagerSingleton>().PlayerArmor;
-        currentLives = startLives;
-        //speed = manager.GetComponent<ManagerSingleton>().PlayerSpeed;
-
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        //variable setting isnt working in start, so setting these in update for now
+        if (manager.GetComponent<ManagerSingleton>().PlayerArmor == startLives)
+        {
+            startLives = manager.GetComponent<ManagerSingleton>().PlayerArmor;
+        }
+        else
+        {
+            currentLives = manager.GetComponent<ManagerSingleton>().PlayerArmor;
+        }
+        speed = manager.GetComponent<ManagerSingleton>().PlayerSpeed;
+
+        //currentLives = startLives;
+
         Move();
 
         //decelerate to 0
@@ -45,7 +54,12 @@ public class PlayerScript : MonoBehaviour {
         }
         if (currentLives < 1)
         {
-            //SceneManager.LoadScene("ShopScene");
+            manager.GetComponent<ManagerSingleton>().PlayerArmor = startLives;
+            SceneManager.LoadScene("ShopScene");
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            manager.GetComponent<ManagerSingleton>().PlayerArmor--;
         }
 	}
 
@@ -84,7 +98,7 @@ public class PlayerScript : MonoBehaviour {
     void Explode()
     {
         //deduct a life
-        currentLives--;
+        manager.GetComponent<ManagerSingleton>().PlayerArmor--;
         //respawn the player
         pos = startingPosition;
     }
