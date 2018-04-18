@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 33404367178483024}
   - component: {fileID: 23175184433258624}
   - component: {fileID: 114071963965775468}
-  - component: {fileID: 50837972373119602}
   - component: {fileID: 61747954969237084}
+  - component: {fileID: 50698288597508750}
   m_Layer: 0
   m_Name: BulletTest
   m_TagString: Bullet
@@ -85,7 +85,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1773041058679024}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!50 &50837972373119602
+--- !u!50 &50698288597508750
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
@@ -96,9 +96,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
-  m_AngularDrag: 0
+  m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
