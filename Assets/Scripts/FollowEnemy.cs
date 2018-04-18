@@ -37,4 +37,17 @@ public class FollowEnemy : MonoBehaviour {
         transform.Translate(Vector3.up * Time.deltaTime * speed);
 
     }
+
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+
+        if (coll.tag == "Bullet")
+        {
+            Debug.Log("Hit");
+            Destroy(coll.gameObject);
+            Destroy(gameObject);
+        }
+
+
+    }
 }

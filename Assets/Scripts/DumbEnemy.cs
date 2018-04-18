@@ -35,12 +35,16 @@ public class DumbEnemy : MonoBehaviour {
 
     }
 
-    void OnCollisionStay2D(Collision2D coll)
+    void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.gameObject.tag == "Player")
+
+        if (coll.tag == "Bullet")
         {
             Debug.Log("Hit");
-            Destroy(this.gameObject);
+            Destroy(coll.gameObject);
+            Destroy(gameObject);
         }
+
+
     }
 }
