@@ -25,6 +25,7 @@ public class PlayerScript : MonoBehaviour {
     void Start () {
         startingPosition = this.gameObject.GetComponent<Transform>().position;
         pos = startingPosition;
+        velocity = this.gameObject.GetComponent<Rigidbody2D>().velocity;
         health = maxHealth;
         manager = GameObject.Find("GameManager");
         startLives = manager.GetComponent<ManagerSingleton>().PlayerArmor;
@@ -58,9 +59,9 @@ public class PlayerScript : MonoBehaviour {
 
         this.gameObject.GetComponent<Transform>().position = pos;
         //this.gameObject.GetComponent<Rigidbody2D>().velocity = velocity;
-        // gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveX * speed, moveY * speed);
-        this.gameObject.GetComponent<Transform>().position += this.gameObject.GetComponent<Transform>().up * moveY * speed * Time.deltaTime;
-        this.gameObject.GetComponent<Transform>().Rotate(0, 0, -moveX * turnSpeed);
+        this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveX * speed, moveY * speed);
+        //this.gameObject.GetComponent<Transform>().position += this.gameObject.GetComponent<Transform>().up * moveY * speed * Time.deltaTime;
+        //this.gameObject.GetComponent<Transform>().Rotate(0, 0, -moveX * turnSpeed);
     }
 
     void Fire()
