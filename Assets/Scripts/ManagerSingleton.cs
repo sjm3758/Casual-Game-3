@@ -132,20 +132,20 @@ public class ManagerSingleton : MonoBehaviour {
         //these values take precedence over initiated values in player class
         playerSpeed = 4.0f;
         playerArmor = 1;
-        totalMoney = 0;
         speedCost = 10;
         armorCost = 20;
         speedClicked = 1;
         armorClicked = 1;
-        //money is the only constant UI right now, will change once main menu is added
-        moneyText = GameObject.Find("Money").GetComponent<Text>();
-	}
+        
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        //cost never changes, may want to change this later on to increasing costs with lower starting values
+        //cost never changes, may want to change this later to increasing costs with lower starting values
         speedCost = speedClicked * 10;
         armorCost = armorClicked * 20;
+
+        moneyText = GameObject.Find("Money").GetComponent<Text>();
         moneyText.text = "Money: " + totalMoney;
         //only show some UI on certain scenes (prob should move these to their specific button scripts)
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("ShopScene"))

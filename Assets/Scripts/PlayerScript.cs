@@ -59,10 +59,10 @@ public class PlayerScript : MonoBehaviour {
             manager.GetComponent<ManagerSingleton>().PlayerArmor = startLives;
             SceneManager.LoadScene("ShopScene");
         }
-        if (Input.GetKeyDown(KeyCode.L))
+        /*if (Input.GetKeyDown(KeyCode.L))
         {
             manager.GetComponent<ManagerSingleton>().PlayerArmor--;
-        }
+        }*/
 	}
 
     void Move()
@@ -110,7 +110,7 @@ public class PlayerScript : MonoBehaviour {
 
         if (coll.tag == "Enemy")
         {
-            Debug.Log("Hit");
+            Explode();
         }
 
 
