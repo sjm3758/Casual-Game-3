@@ -15,8 +15,9 @@ public class PlayerScript : MonoBehaviour {
     public float speedCap = 15.0f;
     public int health;
     private int maxHealth = 5;
-    public int currentLives = 2;
-    public int startLives = 2;
+    public int currentLives = 1;
+    //for now, will hold base player lives upon game screen load. should not update during game scene
+    public int startLives = 1;
     private Vector2 startPos = new Vector2(0,0);
     public GameObject manager;
     public Vector2 velocity;
@@ -33,6 +34,7 @@ public class PlayerScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //variable setting isnt working in start, so setting these in update for now
+        //techinally only want the first if to call once. manager's armor will act as indicator of lives left. (not sure if there's a need for current lives then? prob not)
         if (manager.GetComponent<ManagerSingleton>().PlayerArmor == startLives)
         {
             startLives = manager.GetComponent<ManagerSingleton>().PlayerArmor;
