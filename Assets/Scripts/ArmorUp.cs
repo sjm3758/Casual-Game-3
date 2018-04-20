@@ -13,7 +13,7 @@ public class ArmorUp : MonoBehaviour {
     void Start () {
         btn = this.gameObject.GetComponent<Button>();
         manager = GameObject.Find("GameManager");
-        armorText = GameObject.Find("ArmorText").GetComponent<Text>();
+        armorText = GameObject.Find("ArmorTxt").GetComponent<Text>();
         btn.onClick.AddListener(IncreaseArmor);
     }
 	

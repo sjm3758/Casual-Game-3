@@ -484,7 +484,7 @@ GameObject:
   - component: {fileID: 494305077}
   - component: {fileID: 494305076}
   m_Layer: 5
-  m_Name: SpeedText
+  m_Name: SpeedTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1254,7 +1254,7 @@ GameObject:
   - component: {fileID: 1967856082}
   - component: {fileID: 1967856081}
   m_Layer: 5
-  m_Name: ArmorText
+  m_Name: ArmorTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

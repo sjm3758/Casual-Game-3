@@ -13,7 +13,7 @@ public class SpeedUp : MonoBehaviour {
 	void Start () {
         btn = this.gameObject.GetComponent<Button>();
         manager = GameObject.Find("GameManager");
-        speedText = GameObject.Find("SpeedText").GetComponent<Text>();
+        speedText = GameObject.Find("SpeedTxt").GetComponent<Text>();
         btn.onClick.AddListener(UpdateSpeed);
     }
 	

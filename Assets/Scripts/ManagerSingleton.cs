@@ -133,8 +133,8 @@ public class ManagerSingleton : MonoBehaviour {
         playerSpeed = 4.0f;
         playerArmor = 1;
         totalMoney = 0;
-        speedCost = 0;
-        armorCost = 0;
+        speedCost = 10;
+        armorCost = 20;
         speedClicked = 1;
         armorClicked = 1;
         //money is the only constant UI right now, will change once main menu is added
@@ -147,7 +147,7 @@ public class ManagerSingleton : MonoBehaviour {
         speedCost = speedClicked * 10;
         armorCost = armorClicked * 20;
         moneyText.text = "Money: " + totalMoney;
-        //only show some UI on certain scenes
+        //only show some UI on certain scenes (prob should move these to their specific button scripts)
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("ShopScene"))
         {
             armorText = GameObject.Find("CurrentArmorText").GetComponent<Text>();
