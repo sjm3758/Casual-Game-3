@@ -104,4 +104,15 @@ public class PlayerScript : MonoBehaviour {
         //respawn the player
         pos = startingPosition;
     }
+
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+
+        if (coll.tag == "Enemy")
+        {
+            Debug.Log("Hit");
+        }
+
+
+    }
 }
