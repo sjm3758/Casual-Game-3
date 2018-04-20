@@ -277,11 +277,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1002867197 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4635399743600058, guid: 8c6993b6cf1d876488e6f3a03eb80cbb,
-    type: 2}
-  m_PrefabInternal: {fileID: 2040132573}
 --- !u!1 &1154718448
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,15 +343,6 @@ Prefab:
     - target: {fileID: 4489781546214042, guid: 8c6993b6cf1d876488e6f3a03eb80cbb, type: 2}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114175426684960114, guid: 8c6993b6cf1d876488e6f3a03eb80cbb,
-        type: 2}
-      propertyPath: bulletSpawn
-      value: 
-      objectReference: {fileID: 1002867197}
-    - target: {fileID: 1127988688206364, guid: 8c6993b6cf1d876488e6f3a03eb80cbb, type: 2}
-      propertyPath: m_TagString
-      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8c6993b6cf1d876488e6f3a03eb80cbb, type: 2}
