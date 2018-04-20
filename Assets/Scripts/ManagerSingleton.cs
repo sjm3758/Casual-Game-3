@@ -2,16 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ManagerSingleton : MonoBehaviour {
 
     //instance of the script
     private static ManagerSingleton _instance;
 
-    //private player variables and money (update these with functions below)
+    //private player variables and money (update these with properties below)
     private float playerSpeed;
     private int playerArmor;
     private int totalMoney;
+    private int speedCost;
+    private int speedClicked;
+    private int armorCost;
+    private int armorClicked;
+    private Text moneyText;
+    private Text armorText;
+    private Text speedText;
+    private Text livesText;
 
     public static ManagerSingleton Instance
     {
@@ -65,24 +74,106 @@ public class ManagerSingleton : MonoBehaviour {
         }
     }
 
+    public int ArmorCost
+    {
+        get
+        {
+            return armorCost;
+        }
+
+        set
+        {
+            armorCost = value;
+        }
+    }
+
+    public int SpeedCost
+    {
+        get
+        {
+            return speedCost;
+        }
+
+        set
+        {
+            speedCost = value;
+        }
+    }
+
+    public int SpeedClicked
+    {
+        get
+        {
+            return speedClicked;
+        }
+
+        set
+        {
+            speedClicked = value;
+        }
+    }
+
+    public int ArmorClicked
+    {
+        get
+        {
+            return armorClicked;
+        }
+
+        set
+        {
+            armorClicked = value;
+        }
+    }
+
     // Use this for initialization
     void Start () {
+        _instance = Instance;
+        //these values take precedence over initiated values in player class
         playerSpeed = 4.0f;
         playerArmor = 1;
         totalMoney = 0;
-        _instance = Instance;
+        speedCost = 10;
+        armorCost = 20;
+        speedClicked = 1;
+        armorClicked = 1;
+        //money is the only constant UI right now, will change once main menu is added
+        moneyText = GameObject.Find("Money").GetComponent<Text>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        
-		if (Input.GetKeyDown(KeyCode.P))
+        //cost never changes, may want to change this later on to increasing costs with lower starting values
+        speedCost = speedClicked * 10;
+        armorCost = armorClicked * 20;
+        moneyText.text = "Money: " + totalMoney;
+        //only show some UI on certain scenes (prob should move these to their specific button scripts)
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("ShopScene"))
         {
-            SceneManager.LoadScene("PlayerTestScene");
+            armorText = GameObject.Find("CurrentArmorText").GetComponent<Text>();
+            speedText = GameObject.Find("CurrentSpeedText").GetComponent<Text>();
         }
-        /*if (Input.GetKeyDown(KeyCode.S))
+        else
         {
-            SceneManager.LoadScene("ShopScene");
-        }*/
+            armorText = null;
+            speedText = null;
+        }
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("PlayerTestScene"))
+        {
+            livesText = GameObject.Find("Armor").GetComponent<Text>();
+        }
+        else
+        {
+            livesText = null;
+        }
+        if (armorText != null)
+        {
+            armorText.text = "Current: " + playerArmor;
+            speedText.text = "Current: " + playerSpeed;
+        }
+        if (livesText != null)
+        {
+            livesText.text = "Health: " + playerArmor;
+        }
     }
 }

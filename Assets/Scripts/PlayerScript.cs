@@ -9,32 +9,44 @@ public class PlayerScript : MonoBehaviour {
     private Vector3 pos;
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
-    private float speed = 4.0f;
+    public float speed = 4.0f;
     private float turnSpeed = 3.0f;
     private float deltaX;
     public float speedCap = 15.0f;
     public int health;
     private int maxHealth = 5;
-    private int currentLives;
-    private int startLives;
+    public int currentLives = 1;
+    //for now, will hold base player lives upon game screen load. should not update during game scene
+    public int startLives = 1;
     private Vector2 startPos = new Vector2(0,0);
-    private GameObject manager;
+    public GameObject manager;
     public Vector2 velocity;
 
     // Use this for initialization
     void Start () {
         startingPosition = this.gameObject.GetComponent<Transform>().position;
         pos = startingPosition;
+        velocity = this.gameObject.GetComponent<Rigidbody2D>().velocity;
         health = maxHealth;
         manager = GameObject.Find("GameManager");
-        startLives = manager.GetComponent<ManagerSingleton>().PlayerArmor;
-        currentLives = startLives;
-        //speed = manager.GetComponent<ManagerSingleton>().PlayerSpeed;
-
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        //variable setting isnt working in start, so setting these in update for now
+        //techinally only want the first if to call once. manager's armor will act as indicator of lives left. (not sure if there's a need for current lives then? prob not)
+        if (manager.GetComponent<ManagerSingleton>().PlayerArmor == startLives)
+        {
+            startLives = manager.GetComponent<ManagerSingleton>().PlayerArmor;
+        }
+        else
+        {
+            currentLives = manager.GetComponent<ManagerSingleton>().PlayerArmor;
+        }
+        speed = manager.GetComponent<ManagerSingleton>().PlayerSpeed;
+
+        //currentLives = startLives;
+
         Move();
 
         //decelerate to 0
@@ -44,7 +56,12 @@ public class PlayerScript : MonoBehaviour {
         }
         if (currentLives < 1)
         {
-            //SceneManager.LoadScene("ShopScene");
+            manager.GetComponent<ManagerSingleton>().PlayerArmor = startLives;
+            SceneManager.LoadScene("ShopScene");
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            manager.GetComponent<ManagerSingleton>().PlayerArmor--;
         }
 	}
 
@@ -58,9 +75,16 @@ public class PlayerScript : MonoBehaviour {
 
         this.gameObject.GetComponent<Transform>().position = pos;
         //this.gameObject.GetComponent<Rigidbody2D>().velocity = velocity;
-        // gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveX * speed, moveY * speed);
-        this.gameObject.GetComponent<Transform>().position += this.gameObject.GetComponent<Transform>().up * moveY * speed * Time.deltaTime;
-        this.gameObject.GetComponent<Transform>().Rotate(0, 0, -moveX * turnSpeed);
+        this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveX * speed, moveY * speed);
+        //this.gameObject.GetComponent<Transform>().position += this.gameObject.GetComponent<Transform>().up * moveY * speed * Time.deltaTime;
+        //this.gameObject.GetComponent<Transform>().Rotate(0, 0, -moveX * turnSpeed);
+        //this.gameObject.GetComponent<Transform>().Rotate
+
+        //look at the mouse
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
+        float angleRad = Mathf.Atan2(mousePos.y - pos.y, mousePos.x - pos.x);
+        float angle = (180 / Mathf.PI) * angleRad;
+        this.gameObject.GetComponent<Transform>().rotation = Quaternion.Euler(0, 0, angle - 90);
     }
 
     void Fire()
@@ -76,7 +100,7 @@ public class PlayerScript : MonoBehaviour {
     void Explode()
     {
         //deduct a life
-        currentLives--;
+        manager.GetComponent<ManagerSingleton>().PlayerArmor--;
         //respawn the player
         pos = startingPosition;
     }
