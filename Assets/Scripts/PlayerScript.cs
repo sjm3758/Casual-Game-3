@@ -21,6 +21,8 @@ public class PlayerScript : MonoBehaviour {
     private Vector2 startPos = new Vector2(0,0);
     public GameObject manager;
     public Vector2 velocity;
+    public float reloadTime = 10.0f;
+    private float reload;
 
     // Use this for initialization
     void Start () {
@@ -29,6 +31,7 @@ public class PlayerScript : MonoBehaviour {
         velocity = this.gameObject.GetComponent<Rigidbody2D>().velocity;
         health = maxHealth;
         manager = GameObject.Find("GameManager");
+        reload = 0.0f;
 	}
 	
 	// Update is called once per frame
@@ -50,9 +53,13 @@ public class PlayerScript : MonoBehaviour {
         Move();
 
         //decelerate to 0
-        if (Input.GetMouseButtonDown(0))
+
+        //deplete timer
+        if (reload > 0) reload--;
+        if (Input.GetMouseButton(0) && reload < 1.0f)
         {
             Fire();
+            reload = reloadTime;
         }
         if (currentLives < 1)
         {
