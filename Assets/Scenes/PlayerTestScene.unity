@@ -222,6 +222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 1788289580218420, guid: 10f526f6e9363d64985b73914b5dd5e4, type: 2}
   spawnTime: 3
+  startSpawn: 0
   spawnPoints:
   - {fileID: 234045131}
   - {fileID: 1154718449}
@@ -231,6 +232,7 @@ MonoBehaviour:
   - {fileID: 550734976}
   - {fileID: 508738786}
   - {fileID: 1076352775}
+  manager: {fileID: 0}
 --- !u!1 &415600798
 GameObject:
   m_ObjectHideFlags: 0
@@ -610,6 +612,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1107691192}
   - component: {fileID: 1107691191}
+  - component: {fileID: 1107691193}
   m_Layer: 0
   m_Name: SpawnManager
   m_TagString: Untagged
@@ -630,6 +633,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 1788289580218420, guid: 10f526f6e9363d64985b73914b5dd5e4, type: 2}
   spawnTime: 3
+  startSpawn: 3
   spawnPoints:
   - {fileID: 234045131}
   - {fileID: 1154718449}
@@ -639,6 +643,7 @@ MonoBehaviour:
   - {fileID: 550734976}
   - {fileID: 508738786}
   - {fileID: 1076352775}
+  manager: {fileID: 0}
 --- !u!4 &1107691192
 Transform:
   m_ObjectHideFlags: 0
@@ -652,6 +657,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1107691193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1107691190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed75a991359df3246883afbf6f007239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 1273065689611300, guid: 4f25a85e854060249b1b2e459c887b53, type: 2}
+  spawnTime: 5
+  startSpawn: 5
+  spawnPoints:
+  - {fileID: 234045131}
+  - {fileID: 1154718449}
+  - {fileID: 1076352775}
+  - {fileID: 415600799}
+  manager: {fileID: 0}
 --- !u!1 &1148821335
 GameObject:
   m_ObjectHideFlags: 0
