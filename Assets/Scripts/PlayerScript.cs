@@ -19,7 +19,7 @@ public class PlayerScript : MonoBehaviour {
     //for now, will hold base player lives upon game screen load. should not update during game scene
     public int startLives = 1;
     private Vector2 startPos = new Vector2(0,0);
-    public GameObject manager;
+    //public GameObject manager;
     public Vector2 velocity;
     public float reloadTime = 10.0f;
     private float reload;
@@ -30,7 +30,7 @@ public class PlayerScript : MonoBehaviour {
         pos = startingPosition;
         velocity = this.gameObject.GetComponent<Rigidbody2D>().velocity;
         health = maxHealth;
-        manager = GameObject.Find("GameManager");
+        //manager = GameObject.Find("GameManager");
         reload = 0.0f;
 	}
 	
@@ -38,15 +38,15 @@ public class PlayerScript : MonoBehaviour {
 	void Update () {
         //variable setting isnt working in start, so setting these in update for now
         //techinally only want the first if to call once. manager's armor will act as indicator of lives left. (not sure if there's a need for current lives then? prob not)
-        if (manager.GetComponent<ManagerSingleton>().PlayerArmor == startLives)
+        if (ManagerSingleton.Instance.PlayerArmor == startLives)
         {
-            startLives = manager.GetComponent<ManagerSingleton>().PlayerArmor;
+            startLives = ManagerSingleton.Instance.PlayerArmor;
         }
         else
         {
-            currentLives = manager.GetComponent<ManagerSingleton>().PlayerArmor;
+            currentLives = ManagerSingleton.Instance.PlayerArmor;
         }
-        speed = manager.GetComponent<ManagerSingleton>().PlayerSpeed;
+        speed = ManagerSingleton.Instance.PlayerSpeed;
 
         //currentLives = startLives;
 
@@ -63,7 +63,7 @@ public class PlayerScript : MonoBehaviour {
         }
         if (currentLives < 1)
         {
-            manager.GetComponent<ManagerSingleton>().PlayerArmor = startLives;
+            ManagerSingleton.Instance.PlayerArmor = startLives;
             SceneManager.LoadScene("ShopScene");
         }
         /*if (Input.GetKeyDown(KeyCode.L))
@@ -107,7 +107,7 @@ public class PlayerScript : MonoBehaviour {
     void Explode()
     {
         //deduct a life
-        manager.GetComponent<ManagerSingleton>().PlayerArmor--;
+        ManagerSingleton.Instance.PlayerArmor--;
         //respawn the player
         pos = startingPosition;
     }

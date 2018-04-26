@@ -6,9 +6,6 @@ using UnityEngine.UI;
 
 public class ManagerSingleton : MonoBehaviour {
 
-    //instance of the script
-    public static ManagerSingleton _instance = null;
-
     //private player variables and money (update these with properties below)
     private float playerSpeed;
     private int playerArmor;
@@ -43,13 +40,14 @@ public class ManagerSingleton : MonoBehaviour {
 
     private void Awake()
     {
-        if (_instance == null)
+        if (Instance == null)
         {
-            _instance = this;
+            DontDestroyOnLoad(this.gameObject);
+            Instance = this;
         }
-        else if (_instance != this)
+        else if (Instance != this)
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }
 
@@ -141,6 +139,8 @@ public class ManagerSingleton : MonoBehaviour {
             armorClicked = value;
         }
     }
+
+    public static ManagerSingleton Instance { get; set; }
 
     // Use this for initialization
     void Start () {

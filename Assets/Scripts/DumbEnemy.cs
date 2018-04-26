@@ -43,7 +43,7 @@ public class DumbEnemy : MonoBehaviour {
         if (coll.tag == "Bullet")
         {
             //Debug.Log("Hit");
-            GameObject.Find("Singleton").GetComponent<ManagerSingleton>().TotalMoney += money;
+            ManagerSingleton.Instance.TotalMoney += money;
             Destroy(coll.gameObject);
             Destroy(gameObject);
         }
