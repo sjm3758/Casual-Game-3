@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class ManagerSingleton : MonoBehaviour {
 
     //instance of the script
-    private static ManagerSingleton _instance;
+    public static ManagerSingleton _instance = null;
 
     //private player variables and money (update these with properties below)
     private float playerSpeed;
@@ -22,18 +22,34 @@ public class ManagerSingleton : MonoBehaviour {
     private Text speedText;
     private Text livesText;
 
-    public static ManagerSingleton Instance
+    /*public static ManagerSingleton Instance
     {
         get
         {
             //keep instance of this script across scenes
             if (_instance == null)
             {
-                GameObject manager = GameObject.Find("GameManager");
-                _instance = manager.GetComponent<ManagerSingleton>();
+                Debug.Log("null");
+                GameObject manager = new GameObject();
+                manager.name = "Singleton";
+                _instance = manager.AddComponent<ManagerSingleton>();
+                //GameObject manager = GameObject.Find("GameManager");
+                //_instance = manager.GetComponent<ManagerSingleton>();
                 DontDestroyOnLoad(manager);
             }
             return _instance;
+        }
+    }*/
+
+    private void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+        }
+        else if (_instance != this)
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -128,7 +144,6 @@ public class ManagerSingleton : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        _instance = Instance;
         //these values take precedence over initiated values in player class
         playerSpeed = 4.0f;
         playerArmor = 1;

@@ -28,7 +28,7 @@ public class PlayerScript : MonoBehaviour {
         pos = startingPosition;
         velocity = this.gameObject.GetComponent<Rigidbody2D>().velocity;
         health = maxHealth;
-        manager = GameObject.Find("GameManager");
+        manager = GameObject.Find("Singleton");
 	}
 	
 	// Update is called once per frame
