@@ -101,6 +101,7 @@ public class PlayerScript : MonoBehaviour {
         
         //create bullet in front of player with velocity
         var bullet = (GameObject)Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+        
         Destroy(bullet, 2.0f);
     }
 
