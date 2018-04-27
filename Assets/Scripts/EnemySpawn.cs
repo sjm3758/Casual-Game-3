@@ -20,11 +20,11 @@ public class EnemySpawn : MonoBehaviour {
 	void Update () {
 
         spawnTime = startSpawn;
-        spawnTime = spawnTime - manager.GetComponent<ManagerSingleton>().TotalMoney;
-        if (spawnTime == 0)
+        //spawnTime = spawnTime - manager.GetComponent<ManagerSingleton>().TotalMoney;
+        /*if (spawnTime == 0)
         {
             GameObject.Destroy(this);
-        }
+        }*/
 
        }
 

@@ -45,7 +45,7 @@ public class FollowEnemy : MonoBehaviour {
 
         if (coll.tag == "Bullet")
         {
-            GameObject.Find("GameManager").GetComponent<ManagerSingleton>().TotalMoney += money;
+            ManagerSingleton.Instance.TotalMoney += money;
             Destroy(coll.gameObject);
             Destroy(gameObject);
         }
