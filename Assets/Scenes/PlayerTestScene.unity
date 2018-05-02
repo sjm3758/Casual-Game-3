@@ -88,7 +88,6 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -177,7 +176,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 366965518}
-  - component: {fileID: 366965519}
   - component: {fileID: 366965517}
   m_Layer: 0
   m_Name: GameManager
@@ -210,30 +208,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &366965519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 366965516}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed75a991359df3246883afbf6f007239, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 1788289580218420, guid: 10f526f6e9363d64985b73914b5dd5e4, type: 2}
-  spawnTime: 3
-  startSpawn: 0
-  spawnPoints:
-  - {fileID: 234045131}
-  - {fileID: 1154718449}
-  - {fileID: 415600799}
-  - {fileID: 326861733}
-  - {fileID: 1830483687}
-  - {fileID: 550734976}
-  - {fileID: 508738786}
-  - {fileID: 1076352775}
-  manager: {fileID: 0}
 --- !u!1 &415600798
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,7 +260,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 443351989}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -406.5, y: 211.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1148821339}
@@ -360,7 +334,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 482421324}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -406.5, y: 156.9, z: 0}
   m_LocalScale: {x: 1.000093, y: 1.000093, z: 1.000093}
   m_Children: []
   m_Father: {fileID: 1148821339}
@@ -448,6 +422,18 @@ Prefab:
     - target: {fileID: 4489781546214042, guid: 8c6993b6cf1d876488e6f3a03eb80cbb, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489781546214042, guid: 8c6993b6cf1d876488e6f3a03eb80cbb, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.5025908
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489781546214042, guid: 8c6993b6cf1d876488e6f3a03eb80cbb, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.5025908
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489781546214042, guid: 8c6993b6cf1d876488e6f3a03eb80cbb, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.5025908
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8c6993b6cf1d876488e6f3a03eb80cbb, type: 2}
@@ -571,7 +557,6 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -646,8 +631,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1788289580218420, guid: 10f526f6e9363d64985b73914b5dd5e4, type: 2}
-  spawnTime: 3
-  startSpawn: 3
+  spawnTime: 1
+  startSpawn: 0.1
   spawnPoints:
   - {fileID: 234045131}
   - {fileID: 1154718449}
@@ -683,8 +668,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1273065689611300, guid: 4f25a85e854060249b1b2e459c887b53, type: 2}
-  spawnTime: 5
-  startSpawn: 5
+  spawnTime: 1.5
+  startSpawn: 0.1
   spawnPoints:
   - {fileID: 234045131}
   - {fileID: 1154718449}
@@ -773,8 +758,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1148821335}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 90}
+  m_LocalScale: {x: 0.0147492625, y: 0.0147492625, z: 0.0147492625}
   m_Children:
   - {fileID: 443351990}
   - {fileID: 482421325}
