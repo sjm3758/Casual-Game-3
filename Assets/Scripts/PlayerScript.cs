@@ -70,7 +70,9 @@ public class PlayerScript : MonoBehaviour {
         {
             manager.GetComponent<ManagerSingleton>().PlayerArmor--;
         }*/
-	}
+        
+
+    }
 
     void Move()
     {
@@ -79,8 +81,7 @@ public class PlayerScript : MonoBehaviour {
         float moveY = Input.GetAxis("Vertical");
         pos = this.gameObject.GetComponent<Transform>().position;
         //velocity = gameObject.GetComponent<Rigidbody2D>().velocity;
-
-        this.gameObject.GetComponent<Transform>().position = pos;
+        
         //this.gameObject.GetComponent<Rigidbody2D>().velocity = velocity;
         this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveX * speed, moveY * speed);
         //this.gameObject.GetComponent<Transform>().position += this.gameObject.GetComponent<Transform>().up * moveY * speed * Time.deltaTime;
@@ -92,6 +93,11 @@ public class PlayerScript : MonoBehaviour {
         float angleRad = Mathf.Atan2(mousePos.y - pos.y, mousePos.x - pos.x);
         float angle = (180 / Mathf.PI) * angleRad;
         this.gameObject.GetComponent<Transform>().rotation = Quaternion.Euler(0, 0, angle - 90);
+
+        //keep in camera view
+        pos.x = Mathf.Clamp(pos.x, -6.0f, 6.0f);
+        pos.y = Mathf.Clamp(pos.y, -4.5f, 4.5f);
+        this.gameObject.GetComponent<Transform>().position = pos;
     }
 
     void Fire()
