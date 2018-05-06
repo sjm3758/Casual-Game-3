@@ -204,5 +204,11 @@ public class ManagerSingleton : MonoBehaviour {
         {
             livesText.text = "Health: " + playerArmor;
         }
+
+        //exit the game if the escape key is pressed
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 }
