@@ -30,6 +30,7 @@ public class SpeedUp : MonoBehaviour {
         {
             ManagerSingleton.Instance.PlayerSpeed += 0.5f;
             ManagerSingleton.Instance.TotalMoney -= ManagerSingleton.Instance.SpeedCost;
+            ManagerSingleton.Instance.SpeedClicked++;
         }
     }
 }

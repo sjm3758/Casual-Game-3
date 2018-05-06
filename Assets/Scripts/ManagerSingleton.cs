@@ -14,6 +14,7 @@ public class ManagerSingleton : MonoBehaviour {
     private int speedClicked;
     private int armorCost;
     private int armorClicked;
+    private int highScore;
     private Text moneyText;
     private Text armorText;
     private Text speedText;
@@ -142,6 +143,19 @@ public class ManagerSingleton : MonoBehaviour {
 
     public static ManagerSingleton Instance { get; set; }
 
+    public int HighScore
+    {
+        get
+        {
+            return highScore;
+        }
+
+        set
+        {
+            highScore = value;
+        }
+    }
+
     // Use this for initialization
     void Start () {
         //these values take precedence over initiated values in player class
@@ -151,7 +165,7 @@ public class ManagerSingleton : MonoBehaviour {
         armorCost = 20;
         speedClicked = 1;
         armorClicked = 1;
-        
+        HighScore = 0;
     }
 	
 	// Update is called once per frame

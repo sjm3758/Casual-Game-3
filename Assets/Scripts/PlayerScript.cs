@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour {
 
@@ -19,10 +20,13 @@ public class PlayerScript : MonoBehaviour {
     //for now, will hold base player lives upon game screen load. should not update during game scene
     public int startLives = 1;
     private Vector2 startPos = new Vector2(0,0);
-    //public GameObject manager;
     public Vector2 velocity;
     public float reloadTime = 10.0f;
     private float reload;
+    public int currentScore;
+    private Text currentScoreText;
+    private Text highScoreText;
+    
 
     // Use this for initialization
     void Start () {
@@ -30,8 +34,9 @@ public class PlayerScript : MonoBehaviour {
         pos = startingPosition;
         velocity = this.gameObject.GetComponent<Rigidbody2D>().velocity;
         health = maxHealth;
-        //manager = GameObject.Find("GameManager");
         reload = 0.0f;
+        currentScoreText = GameObject.Find("CurrentScore").GetComponent<Text>();
+        highScoreText = GameObject.Find("HighScore").GetComponent<Text>();
 	}
 	
 	// Update is called once per frame
@@ -70,8 +75,13 @@ public class PlayerScript : MonoBehaviour {
         {
             manager.GetComponent<ManagerSingleton>().PlayerArmor--;
         }*/
-        
+        currentScoreText.text = "Your Score: " + currentScore;
+        highScoreText.text = "High Score: " + ManagerSingleton.Instance.HighScore;
 
+        if (currentScore > ManagerSingleton.Instance.HighScore)
+        {
+            ManagerSingleton.Instance.HighScore = currentScore;
+        }
     }
 
     void Move()

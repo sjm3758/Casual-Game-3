@@ -30,6 +30,7 @@ public class ArmorUp : MonoBehaviour {
         {
             ManagerSingleton.Instance.PlayerArmor++;
             ManagerSingleton.Instance.TotalMoney -= ManagerSingleton.Instance.ArmorCost;
+            ManagerSingleton.Instance.ArmorClicked++;
         }
     }
 }

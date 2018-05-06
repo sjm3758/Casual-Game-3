@@ -11,6 +11,7 @@ public class FollowEnemy : MonoBehaviour {
     private float distance;
     private Quaternion q;
     private int money;
+    private int score;
 
     // Use this for initialization
     void Start()
@@ -21,6 +22,7 @@ public class FollowEnemy : MonoBehaviour {
         float angle = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg - 90f;
         q = Quaternion.AngleAxis(angle, Vector3.forward);*/
         money = 1;
+        score = 3;
     }
 
     // Update is called once per frame
@@ -46,6 +48,7 @@ public class FollowEnemy : MonoBehaviour {
         if (coll.tag == "Bullet")
         {
             ManagerSingleton.Instance.TotalMoney += money;
+            GameObject.Find("PlayerTest").GetComponent<PlayerScript>().currentScore += score;
             Destroy(coll.gameObject);
             Destroy(gameObject);
         }
